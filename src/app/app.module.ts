@@ -7,7 +7,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { CustomerModule } from './modules/customer/customer.module';
 import { ToastrModule} from 'ngx-toastr';
-import { JwtModule } from "@auth0/angular-jwt";
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -28,7 +28,6 @@ import { AddressService } from './services/address.service';
 // import { ConfirmPassDirective } from './share/confirm-pass.directive';
 
 import { AuthInterceptor } from './auth.interceptor';
-import { AddProductsComponent } from '../../src/app/modules/customer/add-products/add-products.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -62,8 +61,9 @@ export function tokenGetter() {
     }),
     JwtModule.forRoot({
       config: {
+        // tslint:disable-next-line:object-literal-shorthand
         tokenGetter: tokenGetter,
-        whitelistedDomains: ["localhost:4000"]
+        whitelistedDomains: ['localhost:4000']
       }
     })
   ],
@@ -79,6 +79,5 @@ export function tokenGetter() {
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [AddProductsComponent]
 })
 export class AppModule { }
